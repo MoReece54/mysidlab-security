@@ -19,7 +19,7 @@
       iam:
         iam_type: group
         name: "{{ item }}"
-        state: "{{ group_opts_state }}"
+        state: "{{ group_opts.state }}"
       with_items: 
         - "{{ aws_groups }}"
       register: new_groups
@@ -29,6 +29,6 @@
       iam:
         iam_type: user
         name: "{{ item.name }}"
-        state: "{{ user_opts_state }}"
+        state: "{{ user_opts.state }}"
         groups: "{{ item.aws_groups }}"
       loop: "{{ users }}"
